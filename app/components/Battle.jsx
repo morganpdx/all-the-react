@@ -87,7 +87,6 @@ class PlayerInput extends React.Component {
     return (
       <form className='column' onSubmit={this.handleSubmit}>
         <label 
-          className='battle-player-header' 
           htmlFor='username'>
           {this.props.label}
         </label>
@@ -97,7 +96,8 @@ class PlayerInput extends React.Component {
           type='text'
           autoComplete='off'
           value={this.state.username}
-          onChange={this.handleChange} />
+          onChange={this.handleChange} 
+        />
         <button
           className='button'
           type='submit'
