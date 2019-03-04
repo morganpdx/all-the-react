@@ -1,9 +1,10 @@
 var React = require('react');
 var PropTypes = require('prop-types');
+var queryString = require('query-string');
 var Link = require('react-router-dom').Link;
 
 var api = require('../utils/api');
-var queryString = require('query-string');
+var PlayerPreview = require('../components/PlayerPreview.jsx');
 
 // Calculate and display battle results
 class BattleResults extends React.Component {
@@ -90,9 +91,31 @@ function Player (props) {
     <div className='column'>
       <h2 className='player-header'>{props.label}</h2>
       <h4 style={{textAlign: 'center'}}>{'Score:'} {props.score}</h4>
+      <PlayerProfile profile={props.profile} />
     </div>
   );
 }
+
+
+function PlayerProfile (props) {
+  var profile = props.profile;
+  return (
+    <PlayerPreview 
+      avatar={profile.avatar_url}
+      username={profile.login}>
+      <ul className='space-list-items'>
+        {profile.name && <li>{profile.name}</li>}
+        {profile.location && <li>{profile.location}</li>}
+        {profile.company && <li>{profile.company}</li>}
+        <li>{'Followers:'} {profile.followers}</li>
+        <li>{'Following:'} {profile.following}</li>
+        <li>{'Public Repos:'} {profile.public_repos}</li>
+        {profile.blog && <li><a href={profile.blog}>{profile.blog}</a></li>}
+      </ul>
+    </PlayerPreview>
+  );
+}
+
 
 BattleResults.propTypes = {
   location: PropTypes.object.isRequired,
@@ -103,5 +126,9 @@ Player.propTypes = {
   score: PropTypes.number.isRequired,
   profile: PropTypes.object.isRequired,
 };
+
+PlayerProfile.propTypes = {
+  profile: PropTypes.object.isRequired,
+}
 
 module.exports = BattleResults;
