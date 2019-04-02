@@ -5,6 +5,7 @@ var Link = require('react-router-dom').Link;
 
 var api = require('../utils/api');
 var PlayerPreview = require('../components/PlayerPreview.jsx');
+var Loading = require('../components/Loading.jsx');
 
 // Calculate and display battle results
 class BattleResults extends React.Component {
@@ -56,7 +57,7 @@ class BattleResults extends React.Component {
     var loading = this.state.loading;
 
     if (loading === true) {
-      return (<p>{'Loading...'}</p>);
+      return (<Loading text='Battling it out' />);
     }
 
     if (error) {
@@ -129,6 +130,6 @@ Player.propTypes = {
 
 PlayerProfile.propTypes = {
   profile: PropTypes.object.isRequired,
-}
+};
 
 module.exports = BattleResults;

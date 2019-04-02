@@ -3,7 +3,7 @@ var PropTypes = require('prop-types');
 var api = require('../utils/api');
 
 var ReposGrid = require('../components/ReposGrid.jsx');
-var Loading = require('../components/Loading');
+var Loading = require('../components/Loading.jsx');
 
 // Parent component for 'Popular' page
 class Popular extends React.Component {
@@ -60,7 +60,7 @@ class Popular extends React.Component {
           selectedLanguage={this.state.selectedLanguage}
         />
         { !this.state.repos 
-          ? <Loading text='Loading Repo Grid...' />
+          ? <Loading text={'Loading Repos'} speed={350} />
           : <ReposGrid repos={this.state.repos} />
         }
       </div>
@@ -70,7 +70,7 @@ class Popular extends React.Component {
 
 // Child component for the language selector
 function SelectLanguage (props) {
-  var languages = ['All', 'CSS', 'Java', 'Javascript', 'Python', 'Ruby'];
+  var languages = ['All', 'CSS', 'Java', 'Javascript', 'Python', 'Ruby', 'Scala'];
   return (
     <ul className='popular-languages'>
       {languages.map(function (lang) {
