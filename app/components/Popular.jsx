@@ -3,6 +3,7 @@ var PropTypes = require('prop-types');
 var api = require('../utils/api');
 
 var ReposGrid = require('../components/ReposGrid.jsx');
+var Loading = require('../components/Loading');
 
 // Parent component for 'Popular' page
 class Popular extends React.Component {
@@ -59,7 +60,7 @@ class Popular extends React.Component {
           selectedLanguage={this.state.selectedLanguage}
         />
         { !this.state.repos 
-          ? 'LOADING...'
+          ? <Loading text='Loading Repo Grid...' />
           : <ReposGrid repos={this.state.repos} />
         }
       </div>
