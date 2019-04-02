@@ -1,4 +1,5 @@
 var path = require('path');
+var process = require('process');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.html',
