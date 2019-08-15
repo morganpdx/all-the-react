@@ -1,0 +1,9 @@
+# npm
+node_modules
+config
+
+# Mac
+.DS_Store
+
+# Compilation
+dist
