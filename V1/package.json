@@ -18,7 +18,7 @@
   "author": "morganpdx",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.3.0",
     "react": "^16.8.3",
